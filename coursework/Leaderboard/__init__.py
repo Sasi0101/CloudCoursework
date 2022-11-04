@@ -1,6 +1,7 @@
 import json
 import azure.functions as func
 from azure.cosmos import CosmosClient
+
 DATABASE_NAME = "MainContainer"
 CONTAINER_NAME = "RegisteredUsers"
 URL = "https://coursework.documents.azure.com:443/"

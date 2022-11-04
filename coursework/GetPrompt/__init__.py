@@ -39,10 +39,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         for i in range(len(usernames)):
             to_append = list(container_prompt.query_items(query = 
         "SELECT c.id, c.text, c.username FROM c WHERE c.username=\"" + usernames[i] + "\"", enable_cross_partition_query=True))
+        
+            if(len(to_append) != 0):
+                for k in range(len(to_append)):
+                    final_submit.append(to_append[k])
+                to_append.clear()
 
-
-        if(len(to_append) != 0):
-            for i in range(len(to_append)):
-                final_submit.append(to_append[i])
 
     return func.HttpResponse(json.dumps(final_submit))

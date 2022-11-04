@@ -1,7 +1,6 @@
 from azure.cosmos import CosmosClient
 import azure.functions as func
 import json
-import random
 
 DATABASE_NAME = "MainContainer"
 CONTAINER_USERS = "RegisteredUsers"
@@ -13,7 +12,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     client = CosmosClient(URL, credential=KEY)
     database = client.get_database_client(DATABASE_NAME)
-    container_users = database.get_container_client(CONTAINER_USERS)
     container_prompt = database.get_container_client(CONTAINER_PROMPT)
 
     input = req.get_json()
