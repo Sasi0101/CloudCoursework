@@ -3,12 +3,14 @@ from azure.cosmos import CosmosClient
 import azure.functions as func
 import json
 import uuid
+import config
 
-DATABASE_NAME = "MainContainer"
-CONTAINER_USERS = "RegisteredUsers"
-CONTAINER_PROMPT = "Prompt"
-URL = "https://coursework.documents.azure.com:443/"
-KEY = "LLqDlNjStpwAFL07vYlVFw9gKpbv693bc0BJsQ8PjGiKyGLk0fmLFrRmx1tGUepptUcCONiXefTknJi193HtIQ=="
+DATABASE_NAME = config.settings["db_id"]
+CONTAINER_USERS = config.settings["CONTAINER_USERS"]
+CONTAINER_PROMPT = config.settings["CONTAINER_PROMPT"]
+URL = config.settings["db_URI"]
+KEY = config.settings["db_key"]
+
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     
